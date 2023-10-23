@@ -396,6 +396,7 @@ body {
   .todo__wrapper-info {
     /* flex-direction: column; */
     gap: 30px;
+    /* justify-content: space-between; */
   }
   .todo__wrapper-input {
     padding: 0px;
@@ -406,6 +407,20 @@ body {
   .todo__wrapper-title {
     text-align: center;
   }
+}
+
+@media(max-width: 371px) {
+  .todo__info-title {
+    font-size: 22px;
+  }
+  .todo__task-counter {
+    width: 100px;
+    height: 100px;
+  }
+  .todo__wrapper-info {
+    gap: 39px;
+  }
+  
 }
 
 
