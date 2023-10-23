@@ -1,18 +1,24 @@
 
 const addBtn = document.querySelector('.todo__add-btn')
-const item = document.querySelector('.todo__task-item')
+const item = document.querySelectorAll('.todo__task-item')
 const wrapperTask = document.querySelector('.todo__wrapper-task')
 const input = document.querySelector('.todo__input')
 const countDone = document.querySelector('.todo__counter-done')
 const countWait = document.querySelector('.todo__counter-wait')
+const btnArhive = document.querySelector('.todo__archive')
+const archiveSpan = document.querySelector('.todo__archive-span')
+// const tasktitle = document.querySelector('.todo__task-title')
 let countUp = 0
 let countDown = 0
+let dataCount = 0
 
 
 
-addBtn.addEventListener('click', addNewTask) 
-wrapperTask.addEventListener('click', deleteTastk)
-wrapperTask.addEventListener('click', markerTask)
+addBtn.addEventListener('click', addNewTask)  // Добавление новой таски
+wrapperTask.addEventListener('click', deleteTastk) // Удаление таски
+wrapperTask.addEventListener('click', markerTask) // Метка Выполенной таски
+wrapperTask.addEventListener('click', openPopUpTask) // Попап для таски
+// btnArhive.addEventListener('click', openPopUpArchive)
 
 
 
@@ -39,9 +45,10 @@ function markerTask (event) {
 /*==============================================================*/
 // Добавление новой таски
 function addNewTask() {
+  dataCount++
   if (input.value === '') return
   const newTask = `
-    <li class="todo__task-item">
+    <li class="todo__task-item" data-target="${dataCount}">
     <div class="todo__item-circle"></div>
     <h5 class="todo__task-title">
       ${input.value}
@@ -64,11 +71,12 @@ function addNewTask() {
       </div>
       </li>
   ` 
-  wrapperTask.insertAdjacentHTML('afterbegin', newTask)
+  wrapperTask.insertAdjacentHTML('beforeend', newTask)
   input.value = ''
   input.focus()
   countUp++
   countDone.textContent = countUp
+  
 }
 /*=============================================================*/
 // Удаление таски
@@ -78,10 +86,59 @@ function deleteTastk(event) {
     parenNode.remove()
     countUp--
     countDown++
+    archiveSpan.textContent = countDown
     countDone.textContent = countUp
     countWait.textContent = countDown
   }
 }
+/*============================================================*/
+//Попап Архива
+
+/*============================================================*/
+// Попап для таски
+const popUpTask = document.querySelector('.todo__popup-task')
+const overlya = document.querySelector('.todo__overlya')
+const btnSavePopUp = document.querySelector('.todo__popup-save')
+const textarea = document.querySelector('.todo__popup-textarea')
+
+
+function openPopUpTask (event) {
+  if (event.target.classList.contains('todo__task-edit')) {
+    const parentNode = event.target.closest('.todo__task-item')
+    const itemTitle = parentNode.querySelector('.todo__task-title')
+    // const taskTitle = parentNode.dataset.target
+    // console.log(taskTitle)
+
+    textarea.value = itemTitle.textContent
+    console.log(itemTitle.textContent)
+    // dataItem = taskTitle
+    overlya.classList.add('active-overlya')
+    popUpTask.classList.add('pop-up-active') 
+  }
+}
+
+btnSavePopUp.addEventListener('click', () => {
+  overlya.classList.remove('active-overlya')
+  popUpTask.classList.remove('pop-up-active')
+
+  const itemTask = document.querySelectorAll('.todo__task-item') 
+  itemTask.forEach(item => {
+    const transformData = String(dataCount)
+    if (item.dataset.target === transformData) {
+      const taskTitle = item.querySelector('.todo__task-title')      
+      taskTitle.textContent = textarea.value 
+
+    } 
+  })
+
+})
+
+/*============================================================*/
+
+
+
+
+
 
 
 
