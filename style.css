@@ -384,11 +384,9 @@ body {
   .todo__info-title {
     font-size: 25px;
   }
+
   .todo__counter-wait, .todo__counter-done, .todo__counter-slesh {
     font-size: 35px;
-  }
-  .header__title {
-    font-size: 25px;
   }
 }
 @media(max-width: 450px) {
@@ -397,7 +395,7 @@ body {
   }
   .todo__wrapper-info {
     /* flex-direction: column; */
-    gap: 20px;
+    gap: 30px;
   }
   .todo__wrapper-input {
     padding: 0px;
@@ -407,16 +405,6 @@ body {
   }
   .todo__wrapper-title {
     text-align: center;
-  }
-  .todo__task-counter {
-    width: 100px;
-    height: 100px;
-  }
-  .todo__counter-wait, .todo__counter-done, .todo__counter-slesh {
-    font-size: 30px;
-  }
-  .todo__info-title {
-    font-size: 21px;
   }
 }
 
