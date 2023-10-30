@@ -4,25 +4,43 @@
   box-sizing: border-box;
 }
 :root {
+  /* ============================ Ночная тема */
   --color-text:#ddccb0;
-  --color-ogange:#ff5631;
-  --color-grey:#686156;
+  --color-second-color:#ff5631;
   --color-green:#57cb4c;
   --color-border:#6e6659;
   --color-bg:#000000;
   --color-bg-task:#1e1e1e;
-
+  /* ============================ Дневная тема */
+  /* --color-day-text: #36434b;
+  --color-day-blue:#528bfe;
+  --color-day-border:#999898;
+  --color-day-bg:#e1eafb;
+  --color-day-bg-task:#d3dff5; */
   --font-main:'Poppins', sans-serif;
 }
 
 html,body {
   min-height: 100%;
 }
+body.day-theme {
+  --color-text:#36434b;
+  --color-second-color:#528bfe;
+  --color-green:#57cb4c;
+  --color-border:#999898;
+  --color-bg:#e1eafb;
+  --color-bg-task:#d3dff5;
+}
+
 body {
+  transition: 0.4s;
   font-family: var(--font-main);
   padding: 50px 0 50px 0;
   color: var(--color-text);
   background-color: var(--color-bg);
+}
+svg {
+  pointer-events: none;
 }
 .container {
   max-width: 800px;
@@ -47,7 +65,7 @@ body {
   letter-spacing: 1.5px;
 }
 .header__title span {
-  color: var(--color-ogange);
+  color: var(--color-second-color);
 }
 .header__settings {
   background-color: transparent;
@@ -59,10 +77,25 @@ body {
   transition: 0.3s;
 }
 .header__settings:hover {
-  stroke: var(--color-ogange);
+  stroke: var(--color-second-color);
   scale: 1.1;
   transition: 0.3s;
 
+}
+
+
+
+
+
+.btn-nigth {
+  display: none;
+}
+
+.remove-icon-day {
+  display: none;
+}
+.add-icon-nigth {
+  display: block;
 }
 
 
@@ -106,7 +139,7 @@ body {
 
 }
 .todo__archive:hover {
-  border: 2px solid var(--color-ogange);
+  border: 2px solid var(--color-second-color);
   transform: scale(0.9);
   transition: 0.3s;
 }
@@ -120,9 +153,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #000;
+  color: var(--color-bg);
   font-weight: 700;
-  background-color: var(--color-ogange);
+  background-color: var(--color-second-color);
 }
 .todo__task-counter {
   display: flex;
@@ -130,11 +163,11 @@ body {
   justify-content: center;
   width: 140px;
   height: 140px;
-  background-color: var(--color-ogange);
+  background-color: var(--color-second-color);
   border-radius: 50%;
 }
 .todo__counter-wait,.todo__counter-done,.todo__counter-slesh {
-  color: #000;
+  color: var(--color-bg);
   font-size: 45px;
   font-weight: 700;
 }
@@ -151,6 +184,7 @@ body {
   font-size: 17px;
   letter-spacing: 0.5px;
   font-weight: 400;
+  color: var(--color-border);
 }
 .todo__input {
   font-family: var(--font-main);
@@ -167,20 +201,21 @@ body {
 
 }
 .input-active {
-  border: 2px solid var(--color-ogange);
+  border: 2px solid var(--color-second-color);
   transition: 0.3s;
   
 }
 .todo__add-btn {
   width: 50px;
   height: 50px;
-  background-color: var(--color-ogange);
+  background-color: var(--color-second-color);
   border:  none;
   border-radius: 50%;
   font-size: 30px;
   font-weight: 700;
   cursor: pointer;
   transition: 0.2s;
+  color: var(--color-bg);
 }
 .todo__add-btn:hover {
   transform: scale(0.9);
@@ -199,7 +234,7 @@ body {
   align-items: center;
   justify-content: space-between;
   list-style: none;
-  width: 100%;
+  max-width: 485px;
   border: 2px solid var(--color-border);
   border-radius: 10px;
   padding: 15px 30px 15px 53px;
@@ -216,7 +251,7 @@ body {
   height: 22px;
   border-radius: 50%;
   /* background-color: var(--color-bg-task); */
-  border: 1px solid var(--color-ogange);
+  border: 1px solid var(--color-second-color);
   transform: translate(0,-50%);
   cursor: pointer;
   
@@ -237,19 +272,14 @@ body {
   gap: 20px;
 }
 .todo__task-title {
-  padding: 0px 5px;
+  padding: 0px 10px 0px 0px;
   position: relative;
   font-size: 17px; 
-  /* cursor: pointer; */
+  border: 1px ;
+  color: var(--color-text);
 }
-.active-text:before {
-  position: absolute;
-  top: 50%;
-  left: 0px;
-  content: '';
-  width: 100%;
-  height: 2px;
-  background-color: var(--color-text);
+.active-text {
+  text-decoration: line-through 2px;
 }
 .todo__task-edit,.todo__task-delete  {
   background: transparent;
@@ -263,7 +293,7 @@ body {
 
 }
 .todo__task-edit:hover,.todo__task-delete:hover {
-  stroke: var(--color-ogange);
+  stroke: var(--color-second-color);
   scale: 1.1;
   transition: 0.1s;
 }
@@ -312,7 +342,7 @@ body {
   border-radius: 50%;
   font-size: 30px;
   font-weight: 700;
-  background-color: var(--color-ogange);
+  background-color: var(--color-second-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -329,7 +359,7 @@ body {
   border-radius: 50%;
   font-size: 30px;
   font-weight: 700;
-  background-color: var(--color-ogange);
+  background-color: var(--color-second-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -368,12 +398,25 @@ body {
 }
 
 
+/*====================================================================*/
+/* Переключение темы на тёмную */
+
+
+.theme-black .header__title span {
+  color: var(--color-day-blue);
+}
+
+
 
 /*=====================================================================*/
 
 
 
 @media(max-width: 520px) {
+
+  .todo__popup-task {
+    width: 400px;
+  }
   .todo__wrapper-info {
     padding: 30px 50px;
   }
@@ -390,6 +433,9 @@ body {
   }
 }
 @media(max-width: 450px) {
+  .todo__popup-task {
+    width: 340px;
+  }
   .todo__wrapper-info {
     padding: 30px 20px;
   }
@@ -404,11 +450,13 @@ body {
   .todo__input {
     margin-right: 10px;
   }
-  .todo__wrapper-title {
-  }
+  
 }
 
 @media(max-width: 371px) {
+  .todo__popup-task {
+    width: 290px;
+  }
   .todo__info-title {
     font-size: 22px;
   }

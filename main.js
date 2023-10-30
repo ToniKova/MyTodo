@@ -7,7 +7,9 @@ const countDone = document.querySelector('.todo__counter-done')
 const countWait = document.querySelector('.todo__counter-wait')
 const btnArhive = document.querySelector('.todo__archive')
 const archiveSpan = document.querySelector('.todo__archive-span')
-// const tasktitle = document.querySelector('.todo__task-title')
+const btnTheme = document.querySelector('.header__settings')
+const body = document.querySelector('body')
+
 let countUp = 0
 let countDown = 0
 let dataCount = 0
@@ -15,11 +17,58 @@ let dataCount = 0
 
 
 addBtn.addEventListener('click', addNewTask)  // Добавление новой таски
-wrapperTask.addEventListener('click', deleteTastk) // Удаление таски
+wrapperTask.addEventListener('click', deleteTask) // Удаление таски
 wrapperTask.addEventListener('click', markerTask) // Метка Выполенной таски
 wrapperTask.addEventListener('click', openPopUpTask) // Попап для таски
 // btnArhive.addEventListener('click', openPopUpArchive)
+body.addEventListener('click', themeBody) // Замена цветовой темы для Боди
 
+
+
+
+// Цветовая тема сайта
+const btnDay = document.querySelector('.btn-day')
+const btnNigth = document.querySelector('.btn-nigth')
+
+function addClassDayTheme () {
+  body.classList.add('day-theme')
+  btnDay.classList.add('remove-icon-day')
+  btnNigth.classList.add('add-icon-nigth')
+  localStorage.setItem('theme', 'day')
+}
+function addClassNigthTheme () {
+  body.classList.remove('day-theme')
+  btnDay.classList.remove('remove-icon-day')
+  btnNigth.classList.remove('add-icon-nigth')
+  localStorage.setItem('theme', 'dark')
+}
+
+function themeBody (event) {
+  if (event.target.classList.contains('btn-day')) {
+    addClassDayTheme()
+  } 
+  if (event.target.classList.contains('btn-nigth')) {
+    addClassNigthTheme()
+  }
+}
+
+if (localStorage.getItem('theme') === 'day') {
+  addClassDayTheme()
+}
+
+// Находим нужные переменные
+    // const colorDayBlue = getComputedStyle(document.documentElement).getPropertyValue('--color-day-blue')
+    // const colorDayBg = getComputedStyle(document.documentElement).getPropertyValue('--color-day-bg')
+    // const colorDayText = getComputedStyle(document.documentElement).getPropertyValue('--color-day-text')
+    // const colorDayBgTask = getComputedStyle(document.documentElement).getPropertyValue('--color-day-bg-task')
+    // const colorDayBorder = getComputedStyle(document.documentElement).getPropertyValue('--color-day-border')
+    
+
+    // const colorOgange = document.documentElement.style.setProperty('--color-ogange',colorDayBlue )
+    // const colorBg = document.documentElement.style.setProperty('--color-bg',colorDayBg )
+    // const colorText = document.documentElement.style.setProperty('--color-text',colorDayText )
+    // const colorBgTask = document.documentElement.style.setProperty('--color-bg-task',colorDayBgTask )
+// const colorBorder = document.documentElement.style.setProperty('--color-border',colorDayBorder )
 
 
 /*==============================================================*/
@@ -80,7 +129,7 @@ function addNewTask() {
 }
 /*=============================================================*/
 // Удаление таски
-function deleteTastk(event) {
+function deleteTask(event) {
   if (event.target.classList.contains('todo__task-delete')) {
     const parenNode = event.target.closest('.todo__task-item')
     parenNode.remove()
@@ -100,38 +149,35 @@ const popUpTask = document.querySelector('.todo__popup-task')
 const overlya = document.querySelector('.todo__overlya')
 const btnSavePopUp = document.querySelector('.todo__popup-save')
 const textarea = document.querySelector('.todo__popup-textarea')
-
+let dataItem = 0 
 
 function openPopUpTask (event) {
   if (event.target.classList.contains('todo__task-edit')) {
     const parentNode = event.target.closest('.todo__task-item')
     const itemTitle = parentNode.querySelector('.todo__task-title')
     // const taskTitle = parentNode.dataset.target
-    // console.log(taskTitle)
-
     textarea.value = itemTitle.textContent
-    console.log(itemTitle.textContent)
-    // dataItem = taskTitle
+    dataItem = parentNode.dataset.target
+    // parentNode.classList.add('item-active')
     overlya.classList.add('active-overlya')
     popUpTask.classList.add('pop-up-active') 
   }
 }
-
+// Сохранения и закрытие таски
 btnSavePopUp.addEventListener('click', () => {
   overlya.classList.remove('active-overlya')
-  popUpTask.classList.remove('pop-up-active')
-
+  popUpTask.classList.remove('pop-up-active')  
+  // const transformData = String(dataCount)
   const itemTask = document.querySelectorAll('.todo__task-item') 
-  itemTask.forEach(item => {
-    const transformData = String(dataCount)
-    if (item.dataset.target === transformData) {
-      const taskTitle = item.querySelector('.todo__task-title')      
+  itemTask.forEach((item) => {
+    if (item.dataset.target === dataItem) {
+      // console.log(transformData)
+      const taskTitle = item.querySelector('.todo__task-title')  
       taskTitle.textContent = textarea.value 
-
     } 
   })
-
 })
+
 
 /*============================================================*/
 
