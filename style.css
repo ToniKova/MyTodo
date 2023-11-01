@@ -421,7 +421,6 @@ svg {
   }
   .todo__wrapper-info {
     padding: 30px 50px;
-    background: rgb(21, 78, 40);
   }
   .todo__task-counter {
     width: 120px;
@@ -436,6 +435,9 @@ svg {
   }
 }
 @media(max-width: 450px) {
+  .todo__info-title {
+    font-size: 22.5px;
+  }
   .todo__popup-task {
     width: 340px;
   }
@@ -444,9 +446,8 @@ svg {
   }
   .todo__wrapper-info {
     /* flex-direction: column; */
-    gap: 30px;
-    /* justify-content: space-between; */
-    background: rgb(53, 30, 30);
+    /* gap: 30px; */
+    justify-content: space-between;
   }
   .todo__wrapper-input {
     padding: 0px;
