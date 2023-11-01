@@ -455,7 +455,10 @@ svg {
   
 }
 
-@media(max-width: 371px) {
+@media(max-width: 375px) {
+  .todo__input {
+    width: 80%;
+  }
   .todo__popup-task {
     width: 290px;
   }
@@ -467,6 +470,7 @@ svg {
     height: 100px;
   }
   .todo__wrapper-info {
+    background: rgb(31, 31, 53);
     gap: 0;
     justify-content: space-between;
   }
