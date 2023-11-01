@@ -421,6 +421,7 @@ svg {
   }
   .todo__wrapper-info {
     padding: 30px 50px;
+    background: rgb(21, 78, 40);
   }
   .todo__task-counter {
     width: 120px;
