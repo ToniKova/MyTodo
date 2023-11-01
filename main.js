@@ -127,6 +127,12 @@ function addNewTask() {
   countDone.textContent = countUp
   
 }
+
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'Enter') {
+    addNewTask()
+  }
+}) 
 /*=============================================================*/
 // Удаление таски
 function deleteTask(event) {
