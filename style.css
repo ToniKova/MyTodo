@@ -445,6 +445,7 @@ svg {
     /* flex-direction: column; */
     gap: 30px;
     /* justify-content: space-between; */
+    background: rgb(53, 30, 30);
   }
   .todo__wrapper-input {
     padding: 0px;
@@ -470,7 +471,6 @@ svg {
     height: 100px;
   }
   .todo__wrapper-info {
-    background: rgb(31, 31, 53);
     gap: 0;
     justify-content: space-between;
   }
