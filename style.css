@@ -112,7 +112,7 @@ svg {
 .todo__wrapper-info {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   gap: 50px;
   padding: 40px 60px;
   border: 2px solid var(--color-border);
@@ -484,7 +484,7 @@ svg {
     width: 400px;
   }
   .todo__wrapper-info {
-    padding: 30px 50px;
+    padding: 40px 50px;
   }
   .todo__task-counter {
     width: 120px;
@@ -504,13 +504,13 @@ svg {
 }
 @media(max-width: 450px) {
   .todo__info-title {
-    font-size: 22.5px;
+    font-size: 21.5px;
   }
   .todo__popup-task {
-    width: 340px;
+    width: 330px;
   }
   .todo__wrapper-info {
-    padding: 30px 20px;
+    padding: 30px 30px;
   }
   .todo__wrapper-info {
     justify-content: space-between;
@@ -525,6 +525,12 @@ svg {
   .todo__task-item {
   }
   
+}
+@media(max-width: 386px) {
+  .todo__task-counter {
+    width: 110px;
+    height: 110px;
+  }
 }
 
 @media(max-width: 375px) {
