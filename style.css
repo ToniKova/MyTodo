@@ -166,10 +166,24 @@ svg {
   background-color: var(--color-second-color);
   border-radius: 50%;
 }
-.todo__counter-wait,.todo__counter-done,.todo__counter-slesh {
+/* .todo__counter-wait,.todo__counter-done,.todo__counter-slesh {
   color: var(--color-bg);
   font-size: 45px;
   font-weight: 700;
+} */
+
+.todo__counter-wait {
+  color: var(--color-bg);
+  font-size: 55px;
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.todo__counter-task {
+  color: var(--color-bg);
+  font-weight: 700;
+  font-size: 17px;
+
 }
 .todo__wrapper-input {
   padding: 0 10px 0px 10px;
@@ -198,6 +212,7 @@ svg {
   font-size: 17px;
   color: var(--color-text);
   transition: 0.3s;
+  font-weight: 700;
 
 }
 .input-active {
@@ -229,6 +244,7 @@ svg {
 
 
 .todo__task-item {
+  height: 61px;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
@@ -272,11 +288,18 @@ svg {
   gap: 20px;
 }
 .todo__task-title {
-  padding: 0px 10px 0px 0px;
+  height: 27px;
+  padding: 0px 5px 0px 0px;
   position: relative;
   font-size: 17px; 
   border: 1px ;
   color: var(--color-text);
+  width: 100%;
+  overflow: hidden;
+  /* overflow-y: hidden;
+  overflow-x: hidden; */
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .active-text {
   text-decoration: line-through 2px;
@@ -311,20 +334,65 @@ svg {
   z-index: 5;
 }
 
-.todo__popup-task {
-  min-height: 80px;
+.todo__popup-archive {
   position: fixed;
   top: 40%;
   left: 50%;
   transform: translate(-50%,-50%);
   width: 480px;
-  padding: 10px 20px;
+  padding: 15px;
+  background-color: var(--color-bg-task);
+  z-index: 10;
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  display: none;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+
+}
+
+.todo__popup-archive-text {
+  display: block;
+}
+.text-center {
+  text-align: center;
+}
+.active-archive {
+  display: block;
+}
+
+.todo__popup-task {
+  /* min-height: 100px; */
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 480px;
+  /* padding: 10px 20px; */
   background-color: var(--color-bg-task);
   z-index: 10;
   border: 2px solid var(--color-border);
   border-radius: 10px;
   display: none;
 }
+.todo__popup-textarea {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: var(--color-tast-bg);
+  font-size: 17px;
+  font-weight: 700;
+  outline: none;
+  color: var(--color-text);
+  resize: none;
+  font-family: var(--font-main);
+  padding: 7px 10px 10px 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
 
 .pop-up-active {
   display: block;
@@ -381,22 +449,11 @@ svg {
   transition: 0.2s;
 }
 
-.todo__popup-textarea {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  /* border: 1px solid #fff; */
-  border: none;
-  background: transparent;
-  font-size: 17px;
-  font-weight: 700;
-  outline: none;
-  color: var(--color-text);
-  resize: none;
-  font-family: var(--font-main);
-  padding: 0px;
-}
 
+/* textarea::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+} */
 
 /*====================================================================*/
 /* Переключение темы на тёмную */
