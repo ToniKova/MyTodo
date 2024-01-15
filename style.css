@@ -20,6 +20,7 @@
   --font-main:'Poppins', sans-serif;
 }
 
+
 html,body {
   min-height: 100%;
 }
@@ -111,6 +112,7 @@ svg {
 .todo__wrapper-info {
   display: flex;
   align-items: center;
+  /* justify-content: space-between; */
   gap: 50px;
   padding: 40px 60px;
   border: 2px solid var(--color-border);
@@ -288,8 +290,9 @@ svg {
   gap: 20px;
 }
 .todo__task-title {
+  position: relative;
   height: 27px;
-  padding: 0px 5px 0px 0px;
+  /* padding: 0px 5px 0px 0px; */
   position: relative;
   font-size: 17px; 
   border: 1px ;
@@ -301,6 +304,7 @@ svg {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .active-text {
   text-decoration: line-through 2px;
 }
@@ -463,7 +467,9 @@ svg {
   color: var(--color-day-blue);
 }
 
-
+.none {
+  display: none;
+}
 
 /*=====================================================================*/
 
@@ -471,6 +477,7 @@ svg {
 
 @media(max-width: 520px) {
   body {
+    
     padding: 20px 0px 20px 0px;
   }
   .todo__popup-task {
@@ -490,6 +497,10 @@ svg {
   .todo__counter-wait, .todo__counter-done, .todo__counter-slesh {
     font-size: 35px;
   }
+
+  .todo__task-item {
+    width: 93.269vw;
+  }
 }
 @media(max-width: 450px) {
   .todo__info-title {
@@ -502,8 +513,6 @@ svg {
     padding: 30px 20px;
   }
   .todo__wrapper-info {
-    /* flex-direction: column; */
-    /* gap: 30px; */
     justify-content: space-between;
   }
   .todo__wrapper-input {
@@ -511,6 +520,9 @@ svg {
   }
   .todo__input {
     margin-right: 10px;
+    
+  }
+  .todo__task-item {
   }
   
 }
@@ -523,15 +535,15 @@ svg {
     width: 290px;
   }
   .todo__info-title {
-    font-size: 22px;
+    font-size: 20px;
   }
   .todo__task-counter {
     width: 100px;
     height: 100px;
   }
   .todo__wrapper-info {
-    gap: 0;
-    justify-content: space-between;
+    gap: 20px;
+    /* justify-content: space-between; */
   }
   
 }
@@ -540,9 +552,8 @@ svg {
   .todo__info-title {
   }
   .todo__wrapper-info {
+    padding: 20px 20px;
     justify-content: space-between;
-    gap: 0;
   }
-
 }
 
